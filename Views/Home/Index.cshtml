@@ -23,7 +23,7 @@
                 <td>@obj.Surname</td>
                 <td>@obj.Email</td>
                 <td>@obj.Tarih</td>
-                <td></td>
+                <td><a class="btn btn-warning" asp-controller="Home" asp-action="Edit" asp-route-id="@obj.Id">Edit</a></td>
             </tr>
         }
     </tbody>

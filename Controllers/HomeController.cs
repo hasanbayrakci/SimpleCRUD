@@ -39,5 +39,20 @@ namespace SimpleCRUD.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Edit(int id)
+        {
+            var user = _db.Users.Find(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Users obj)
+        {
+            _db.Users.Update(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
