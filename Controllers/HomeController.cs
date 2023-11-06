@@ -66,5 +66,12 @@ namespace SimpleCRUD.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Detail(int id)
+        {
+            var user = _db.Users.Find(id);
+
+            return View(user);
+        }
+
     }
 }
