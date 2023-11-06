@@ -7,15 +7,17 @@ namespace SimpleCRUD.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppDbContext _db;
+        public HomeController(AppDbContext db, ILogger<HomeController> logger)
         {
+            _db = db;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Users> objUsers = _db.Users;
+            return View(objUsers);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

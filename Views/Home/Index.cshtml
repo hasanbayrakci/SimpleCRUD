@@ -1,8 +1,30 @@
-﻿@{
+﻿@model IEnumerable<Users>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>ASP.NET Core Simple Crud Page</p>
-</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Tarih</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>@obj.Id</td>
+                <td>@obj.Name</td>
+                <td>@obj.Surname</td>
+                <td>@obj.Email</td>
+                <td>@obj.Tarih</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
