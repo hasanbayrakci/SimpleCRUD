@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SimpleCRUD.Models;
 using System.Diagnostics;
 
@@ -51,6 +52,17 @@ namespace SimpleCRUD.Controllers
         {
             _db.Users.Update(obj);
             _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var user = _db.Users.Find(id);
+            if(user != null)
+            {
+                _db.Users.Remove(user);
+                _db.SaveChanges(true);
+            }
             return RedirectToAction("Index");
         }
 
